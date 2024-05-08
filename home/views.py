@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 
 
 class HomeView(TemplateView):
-    template_name = 'home/welome.html'
+    template_name = 'home/welcome.html'
     extra_context = {'today': datetime.today()}
 
 class AuthorizedView(LoginRequiredMixin, TemplateView):
