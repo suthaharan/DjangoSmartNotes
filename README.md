@@ -50,3 +50,19 @@ class Notes(models.Model):
 ```
 $ python manage.py makemigrations
 $ python manage.py migrate
+
+
+### Django Shell
+$ python manage.py shell
+```shell
+from notes.models import Notes
+mynote = Notes.objects.get(pk='1')
+mynote.title
+mynote.text
+Notes.objects.all()
+new_note = Notes.objects.create(title='hello', text="this is just a text")
+Notes.objects.filter(title__startswith="he")
+Notes.objects.filter(text__icontains="is")
+Notes.objects.exclude(text__icontains='django')
+
+```
