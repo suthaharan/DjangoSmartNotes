@@ -1,6 +1,7 @@
-Python 3.8.6 virtualenv
-Django 3.2
+## Python Basics
 
+### Setting up Django on Windows
+```
 $ pip uninstall django
 $ pip install Django==4.2
 $ python -m django --version
@@ -10,9 +11,9 @@ $ python manage.py runserver 9000
 
 $ django-admin startapp home
 In settings.py, under installed_apps add in the newly created app
+```
 
-
-Building your project
+### Building your project
 * Start project
 * Create your first view
   * Modify views.py inside the new app "home" and add in the method
@@ -70,3 +71,36 @@ Notes.objects.exclude(text__icontains='django')
 ### Class based views
 * extensive classes to help you crate powerful endpoints without too much effort
 * Mixins are extra classes used with other classes to provide other useful methods
+
+### Front-end development
+* static files creation to store css, js, media
+```python
+# settings.py
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+```
+* load the static file and reference the css 
+```html
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <title>Document</title>
+</head>
+<body>
+    <h1>These are the notes:</h1>
+    <ul>
+        {% for note in notes %}
+            <li class="note-li">{{note.title}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
