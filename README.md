@@ -27,5 +27,26 @@ Building your project
   * Ideal app is one where you can delete the app folder and nothing else. Django app will work continuously.
 
 ### Django Admin Interface
-* Admin dashboard comes by default
+* Admin dashboard comes by default. Entire authentication system ready to go.
 * Visit http://127.0.0.1:8000/admin/
+* Migrations explain what kind of tables that we need to use.
+* $ python manage.py migrate (currently sqlite is used)
+* $ python manage.py createsuperuser
+* Django admin allows us to quickly access data and filter them
+
+### Django ORM
+* Each class is known as a model in a database table and each class attribute is called a column 
+* Classes -> Make Migrations -> Migrate -> Database
+* $ django-admin startapp notes (separate app for ORM)
+* Add the app to settings.py
+```python
+from django.db import models
+
+# Create your models here.
+class Notes(models.Model):
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+```
+$ python manage.py makemigrations
+$ python manage.py migrate
