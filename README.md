@@ -48,12 +48,12 @@ class Notes(models.Model):
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 ```
-$ python manage.py makemigrations
-$ python manage.py migrate
+* $ python manage.py makemigrations
+* $ python manage.py migrate
 
 
 ### Django Shell
-$ python manage.py shell
+* $ python manage.py shell
 ```shell
 from notes.models import Notes
 mynote = Notes.objects.get(pk='1')
@@ -66,3 +66,7 @@ Notes.objects.filter(text__icontains="is")
 Notes.objects.exclude(text__icontains='django')
 
 ```
+
+### Class based views
+* extensive classes to help you crate powerful endpoints without too much effort
+* Mixins are extra classes used with other classes to provide other useful methods
