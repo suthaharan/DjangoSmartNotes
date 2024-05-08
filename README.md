@@ -104,3 +104,49 @@ STATICFILES_DIRS = [
 </body>
 </html>
 ```
+
+* Base template and extend it 
+```python
+# settings.py -->> 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            BASE_DIR / 'static/templates',
+        ],
+```
+
+```html
+<!-- base.html -->> 
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <title>Smart Notes</title>
+</head>
+<body>
+    
+    {% block content %} 
+    {% endblock %}
+   
+</body>
+</html>
+```
+
+```python
+# notes.html
+{% extends "base.html" %}
+{% block content %}
+    <h1>These are the notes:</h1>
+    <ul>
+        {% for note in notes %}
+            <li class="note-li">{{note.title}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+```
+
