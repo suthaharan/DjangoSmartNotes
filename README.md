@@ -1,4 +1,7 @@
 ## Python Basics
+* Reference for class based views (https://ccbv.co.uk/projects/Django/4.2/django.contrib.auth.views/LoginView/)
+* Reference GitHub for step by step learning (https://github.com/LinkedInLearning/django-esst-2894047/blob/main/notes/templates/notes/notes_detail.html)
+
 
 ### Setting up Django on Windows
 ```
@@ -154,3 +157,18 @@ TEMPLATES = [
 {% endblock %}
 ```
 
+### Add user to Notes table
+```shell
+PS D:\MyDocker\self-analytics> python manage.py shell
+Python 3.8.6 (tags/v3.8.6:db45529, Sep 23 2020, 15:52:53) [MSC v.1927 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from django.contrib.auth.models import User
+>>> user = User.objects.get(pk=1)
+>>> user
+<User: admin>
+>>> user.notes.all()
+<QuerySet [<Notes: Notes object (2)>, <Notes: Notes object (3)>]>
+>>> user.notes.count()
+2
+```
